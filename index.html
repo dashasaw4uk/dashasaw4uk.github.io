@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Родинне дерево</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f4f6fa;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    nav button {
+      margin-left: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+    }
+
+    nav button.active {
+      background: #2b7cff;
+      color: white;
+    }
+
+    section {
+      display: none;
+      padding: 15px;
+    }
+
+    section.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Родинне дерево</h1>
+  <nav>
+    <button data-tab="tree" class="active">Родина</button>
+    <button data-tab="photos">Фотографії</button>
+    <button data-tab="history">Наша історія</button>
+  </nav>
+</header>
+
+<section id="tree" class="active">
+  <h2>Тут буде дерево</h2>
+</section>
+
+<section id="photos">
+  <h2>Тут будуть фото</h2>
+</section>
+
+<section id="history">
+  <h2>Тут буде історія</h2>
+</section>
+
+<script>
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.onclick = () => {
+    const id = btn.dataset.tab;
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+});
+</script>
+
+</body>
+</html>
